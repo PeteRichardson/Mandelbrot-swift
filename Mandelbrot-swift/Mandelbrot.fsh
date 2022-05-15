@@ -8,12 +8,12 @@ void main() {
 
 
     // Rescale the position to the intervals [-2,1] [-1,1]
-    z *= vec2(3.0,2.0);
-    z -= vec2(2.0,1.0);
+    //z *= vec2(2.0,2.0);
+    z -= vec2(0.5,0.5);
 
-    vec2 c = z;
+    //vec2 c = z;
     //vec2 c = vec2(-0.7,0.4);
-    //vec2 c = vec2(-0.7 + cos(u_time) / 3.0,0.4 + sin(u_time) / 3.0);
+    vec2 c = vec2(-0.7 + cos(u_time) / 31.0,0.4 + sin(u_time) / 33.0);
     
     float it = 0.0; // Keep track of what iteration we reached
     for (int i = 0;i < iterations; ++i) {

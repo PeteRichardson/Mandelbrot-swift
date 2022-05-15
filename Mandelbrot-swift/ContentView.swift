@@ -6,21 +6,25 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     @StateObject private var log = Log()
-    let mandelimage: CGImage(maskWidth: <#T##Int#>, height: <#T##Int#>, bitsPerComponent: <#T##Int#>, bitsPerPixel: <#T##Int#>, bytesPerRow: <#T##Int#>, provider: <#T##CGDataProvider#>, decode: <#T##UnsafePointer<CGFloat>?#>, shouldInterpolate: <#T##Bool#>)
-    
+    var scene: SKScene {
+            let scene = SKScene(fileNamed: "Mandelbrot")!
+            scene.size = CGSize(width: 1000, height: 750)
+            scene.scaleMode = .fill
+            return scene
+        }
+
     var body: some View {
         VStack {
-            // ... other stuff ... images, buttons, etc
-            Canvas { context, size in
-                context.fill(
-                    Path(ellipseIn: CGRect(origin: .zero, size: size)),
-                    with: .color(.green))
-            }
-            .frame(width: 300, height: 200)
+            SpriteView(scene: scene)
+                .frame(width: 1000, height: 750)
+                .ignoresSafeArea()
             LogView(log)
+                .frame(width: 1000, height: 400)
+
             HStack{
                 Button("Clear Log") {
                     log.clear()
@@ -35,8 +39,6 @@ struct ContentView: View {
     func _main() {
         log.println("Starting my app.")
         // do some calculations, draw some stuff, whatever...
-        mandelimage = CGImage(maskWidth: <#T##Int#>, height: <#T##Int#>, bitsPerComponent: <#T##Int#>, bitsPerPixel: <#T##Int#>, bytesPerRow: <#T##Int#>, provider: <#T##CGDataProvider#>, decode: <#T##UnsafePointer<CGFloat>?#>, shouldInterpolate: <#T##Bool#>)
-        
         log.println("Ending my app.")
     }
 }
