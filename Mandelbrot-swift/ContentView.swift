@@ -25,21 +25,21 @@ struct ContentView: View {
             LogView(log)
                 .frame(width: 1000, height: 400)
 
-            HStack{
-                Button("Clear Log") {
-                    log.clear()
-                }.padding()
-                Button("Add to Log") {
-                    log.println("Another message!")
-                }.padding()
-            }
+//            HStack{
+//                Button("Clear Log") {
+//                    log.clear()
+//                }.padding()
+//                Button("Add to Log") {
+//                    log.println("Another message!")
+//                }.padding()
+//            }
         }.onAppear(perform:_main)
     }
     
     func _main() {
-        log.println("Starting my app.")
+        log.println("Starting Mandelbrot...")
+        log.println("Edit the equation values in Mandlebrot.fsh to move, zoom, recolor the image, etc.")
         // do some calculations, draw some stuff, whatever...
-        log.println("Ending my app.")
     }
 }
 
